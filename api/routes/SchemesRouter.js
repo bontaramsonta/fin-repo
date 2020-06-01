@@ -26,7 +26,7 @@ router.get('/',(req,res,next)=>{
           flags:doc.flags,
           request:{
             type:"GET",
-            url: process.env.API_URL+'schemes/'+doc._id
+            url: process.env.API_URL+":"+process.env.PORT_NO+'/'+doc._id
           }
         }
       })
@@ -57,7 +57,7 @@ router.get('/:paramId',(req,res,next)=>{
           flags:data.flags,
           request:{
             type:"GET",
-            url: process.env.API_URL+'schemes/'
+            url: process.env.API_URL+":"+process.env.PORT_NO+'/'+'schemes/'
           }
 
       }
