@@ -5,17 +5,21 @@ const schemesRoute = require('./api/routes/SchemesRouter');
 const app = express();
 
 // db connect
-mongoose.connect("mongodb+srv://sourav:"
+mongoose.connect(/*"mongodb+srv://sourav:"
   +process.env.MONGO_ATLAS_PW+
-  "@fin-db-cmksi.mongodb.net/test?retryWrites=true&w=majority",{
+  "@fin-db-cmksi.mongodb.net/test?retryWrites=true&w=majority"*/
+  "mongodb://localhost:5000/test",{
     useNewUrlParser: true, 
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
 });
 
 
 // Middleware
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
+// set response header and cors
 app.use((req,res,next)=>{
   res.header("Access-Control-Allow-Origin","*");
   res.header("Access-Control-Allow-Header",
