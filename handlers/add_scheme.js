@@ -1,4 +1,4 @@
-const Schemes = require('../models/schemes');
+const Schemes = require('../api/models/schemes');
 
 function addScheme(req,res,next)
 {
@@ -22,13 +22,12 @@ function addScheme(req,res,next)
       });
       scheme.save().then((result)=>{
         console.log(result);
+        res.status(201).json({
+          "msg":"new scheme created",
+          "scheme":result
+        });
       }).catch(err=>{
-        console.log(err);
         next(err);
-      });
-      res.status(201).json({
-        msg:"new scheme created",
-        scheme
       });
     }else
     {

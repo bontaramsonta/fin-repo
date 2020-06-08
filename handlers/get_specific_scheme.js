@@ -1,4 +1,4 @@
-const Schemes = require('../models/schemes');
+const Schemes = require('../api/models/schemes');
 
 function getSpecificScheme(req,res,next)
 {
@@ -18,7 +18,7 @@ function getSpecificScheme(req,res,next)
         flags:data.flags,
         additional:{
           type:"GET",
-          url: process.env.API_URL+":"+process.env.PORT_NO+'/'+'schemes/'
+          url: process.env.API_URL+":"+process.env.PORT_NO+'/'+'api/schemes'
         }
       }
       res.status(200).json({"msg":"scheme of given id fetched",response});

@@ -1,4 +1,4 @@
-const Schemes = require('../models/schemes');
+const Schemes = require('../api/models/schemes');
 
 function getAllSchemes(req,res,next)
 {
@@ -23,7 +23,7 @@ function getAllSchemes(req,res,next)
           flags: doc.flags,
           additional:{
             type:"GET",
-            url: process.env.API_URL+":"+process.env.PORT_NO+"/schemes"+'/'+doc._id
+            url: process.env.API_URL+":"+process.env.PORT_NO+"/api/schemes"+'/'+doc._id
           }
         }
       })

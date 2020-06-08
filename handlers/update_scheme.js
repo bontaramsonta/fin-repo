@@ -1,4 +1,4 @@
-const Schemes = require('../models/schemes');
+const Schemes = require('../api/models/schemes');
 
 function updateScheme(req,res,next)
 {
@@ -9,7 +9,7 @@ function updateScheme(req,res,next)
         "old_scheme":data,
         "additional":{
           "type":"GET",
-          "url": process.env.API_URL+":"+process.env.PORT_NO+'/'+'schemes/'+data._id
+          "url": process.env.API_URL+":"+process.env.PORT_NO+'/'+'api/schemes/'+data._id
         }
       });
     }else{

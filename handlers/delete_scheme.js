@@ -1,4 +1,4 @@
-const Schemes = require('../models/schemes');
+const Schemes = require('../api/models/schemes');
 
 function deleteScheme(req,res,next)
 {
