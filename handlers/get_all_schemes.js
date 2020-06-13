@@ -18,7 +18,8 @@ function getAllSchemes(req,res,next)
           min_dur: doc.min_dur,
           max_dur: doc.max_dur,
           interest: doc.interest,
-          agerist: doc.agerist,
+          min_age: doc.min_age,
+          max_age: doc.max_age,
           url: doc.url,
           flags: doc.flags,
           additional:{

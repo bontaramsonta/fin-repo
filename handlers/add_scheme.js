@@ -11,12 +11,13 @@ function addScheme(req,res,next)
         _id : new mongoose.Types.ObjectId(),
         name:req.body.name,
         bname:req.body.bname,
+        interest:req.body.interest,
         min_amt:req.body.min_amt,
         max_amt:req.body.max_amt,
         min_dur:req.body.min_dur,
         max_dur:req.body.max_dur,
-        interest:req.body.interest,
-        agerist:req.body.agerist,
+        min_age:req.body.min_age,
+        max_age:req.body.max_age,
         url:req.body.url,
         flags:req.body.flags
       });

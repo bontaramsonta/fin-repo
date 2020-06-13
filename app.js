@@ -1,15 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
-const schemesRoute = require('./api/routes/SchemesRouter');
-const adminRoute = require('./api/routes/AdminRouter');
+const schemesRouter = require('./api/routes/SchemesRouter');
+const adminRouter = require('./api/routes/AdminRouter');
+const usersRouter = require('./api/routes/usersRouter');
 const app = express();
 
 // db connect
-mongoose.connect("mongodb+srv://sourav:"
+mongoose.connect(/*mongodb+srv://sourav:"
   +process.env.MONGO_ATLAS_PW+
-  "@fin-db-cmksi.mongodb.net/test?retryWrites=true&w=majority"
-  /*"mongodb://localhost:5000/test"*/,{
+  "@fin-db-cmksi.mongodb.net/test?retryWrites=true&w=majority"*/
+  "mongodb://localhost:5000/test",{
     useNewUrlParser: true, 
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -33,8 +34,9 @@ app.use((req,res,next)=>{
 });
 
 // function routes
-app.use('/api/schemes',schemesRoute);
-app.use('/api/admin',adminRoute);
+app.use('/api/schemes',schemesRouter);
+app.use('/api/admin',adminRouter);
+app.use('/api/user',usersRouter);
 
 // 404 route
 app.use((req,res,next)=>{
