@@ -1,27 +1,27 @@
-const Admins = require('../api/models/admins');
+const Users = require('../api/models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-function adminLogin(req,res,next)
+function userLogin(req,res,next)
 {
-  Admins.findOne({email:req.body.email})
+  Users.findOne({email:req.body.email})
   .exec()
-  .then(admin =>{
-    if(admin==null)
+  .then(user =>{
+    if(user==null)
     {
       return res.status(401).json({msg:"Auth failed"});
     }
-    bcrypt.compare(req.body.password,admin.password,(err,result)=>{
+    bcrypt.compare(req.body.password,user.password,(err,result)=>{
       if(err || result==false)
       {
         return res.status(401).json({msg:"Auth failed"});
       }
       const token = jwt.sign({
-        type:"admin",
-        _id:admin._id,
-        email:admin.email
+        _id:user._id,
+        type:"user",
+        email:user.email
       },process.env.JWT_KEY,{
-        expiresIn:"1h"
+        expiresIn:"14d"
       })
       return res.status(200).json({
         msg:"Auth successful",
@@ -34,4 +34,4 @@ function adminLogin(req,res,next)
   });
 }
 
-module.exports = adminLogin;
+module.exports = userLogin;

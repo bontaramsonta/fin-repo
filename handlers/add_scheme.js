@@ -1,4 +1,5 @@
 const Schemes = require('../api/models/schemes');
+const mongoose = require('mongoose');
 
 function addScheme(req,res,next)
 {

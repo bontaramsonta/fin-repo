@@ -7,10 +7,10 @@ const usersRouter = require('./api/routes/usersRouter');
 const app = express();
 
 // db connect
-mongoose.connect(/*mongodb+srv://sourav:"
+mongoose.connect("mongodb+srv://sourav:"
   +process.env.MONGO_ATLAS_PW+
-  "@fin-db-cmksi.mongodb.net/test?retryWrites=true&w=majority"*/
-  "mongodb://localhost:5000/test",{
+  "@fin-db-cmksi.mongodb.net/test?retryWrites=true&w=majority"
+  /*"mongodb://localhost:5000/test"*/,{
     useNewUrlParser: true, 
     useUnifiedTopology: true,
     useFindAndModify: false,
