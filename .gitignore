@@ -2,3 +2,4 @@
 /nodemon.json
 /.data
 /.log
+./package-lock.json

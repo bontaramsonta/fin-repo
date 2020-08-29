@@ -6,16 +6,33 @@ const adminRouter = require('./api/routes/AdminRouter');
 const usersRouter = require('./api/routes/usersRouter');
 const app = express();
 
-// db connect
-mongoose.connect("mongodb+srv://sourav:"
-  +process.env.MONGO_ATLAS_PW+
-  "@fin-db-cmksi.mongodb.net/test?retryWrites=true&w=majority"
-  /*"mongodb://localhost:5000/test"*/,{
-    useNewUrlParser: true, 
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-});
+let dbConnectCounter = 0;
+
+function dbConnect(){
+  // db connect
+  mongoose.connect("mongodb+srv://sourav:"
+    +process.env.MONGO_ATLAS_PW+
+    "@fin-db-cmksi.mongodb.net/test?retryWrites=true&w=majority"
+    /*"mongodb://localhost:5000/test"*/,{
+      useNewUrlParser: true, 
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true
+  },(err)=>{
+    if(!err)
+      console.log("connection established");
+    else if(dbConnectCounter<process.env.DB_RETRIES_MAX){
+      dbConnectCounter++;
+      console.log(`retry ${dbConnectCounter}`);
+      dbConnect();
+    }
+    else{
+      throw new Error("db connection failed");
+    }
+  });
+};
+
+dbConnect();
 
 
 // Middleware
