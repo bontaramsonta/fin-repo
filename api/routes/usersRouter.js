@@ -9,11 +9,11 @@ const user_unsubscribe_scheme =require('../../handlers/user_unsubscribe_scheme')
 const checkAuth = require('../auth/checkAuth')
 
 // fetch user data
-router.get('/:userId',checkAuth,get_user);
+router.get('/:userId', checkAuth,get_user);
 // register
-router.post('/register',user_register);
+router.post('/register', user_register);
 // login
-router.post('/login',user_login);
+router.post('/login', user_login);
 // signoff
 router.delete('/signoff/:userId',checkAuth,user_delete);
 // subscribe to scheme

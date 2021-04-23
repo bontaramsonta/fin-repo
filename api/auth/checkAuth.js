@@ -15,7 +15,7 @@ function checkAuth(req,res,next)
       if(req.userData.type=="admin")
         next();
       else
-        throw new Error("wrong token type");
+        throw new Error("wrong token type, yes");
     }
     else if(req.baseUrl=="/api/user")
     {

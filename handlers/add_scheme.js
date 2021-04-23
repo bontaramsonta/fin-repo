@@ -33,7 +33,7 @@ function addScheme(req,res,next)
       });
     }else
     {
-      throw new Error("record already exists");
+      throw new Error("record already exists. try again");
     }
   })
   .catch(err=>{

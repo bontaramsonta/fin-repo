@@ -57,7 +57,7 @@ app.use('/api/user',usersRouter);
 
 // 404 route
 app.use((req,res,next)=>{
-  const error = new Error("Not a valid request");
+  const error = new Error("Not a valid request. try again");
   error.status = 404;
   next(error);
 });

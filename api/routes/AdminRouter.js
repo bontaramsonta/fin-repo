@@ -6,10 +6,10 @@ const admin_delete =require('../../handlers/admin_delete');
 
 
 // login
-router.post('/login',admin_login);
+router.post('/login', admin_login);
 // register
-router.post('/register',admin_register)
+router.post('/register', admin_register)
 // signoff
-router.delete('/signoff/:adminId',admin_delete)
+router.delete('/signoff/:adminId', admin_delete)
 
 module.exports = router;

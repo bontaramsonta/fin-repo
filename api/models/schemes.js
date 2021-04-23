@@ -12,7 +12,7 @@ const schemesSchema = mongoose.Schema({
   max_amt: { type: Number, default: 0},
   min_age: { type: Number, default: 0},
   max_age: { type: Number, default: 0},
-  flags: { type: Object, default:{}}
+  flags: { type: Object, default: {}}
 });
 
 module.exports = mongoose.model('Schemes',schemesSchema);
